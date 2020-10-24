@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.sawyerren.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="下图是redis正常运作的流程，用户访问淘宝，淘宝再去请求redis，如果redis中有数据，就直接返回；如果redis中没有数据，就会去数据库查询，把查询到的结果返回并将数据同步到redis中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis缓存可能出现的问题和解决方法">
+<meta property="og:url" content="http://www.sawyerren.com/2020/07/23/Redis%E7%BC%93%E5%AD%98%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="SawyerLearnsToCode">
+<meta property="og:description" content="下图是redis正常运作的流程，用户访问淘宝，淘宝再去请求redis，如果redis中有数据，就直接返回；如果redis中没有数据，就会去数据库查询，把查询到的结果返回并将数据同步到redis中。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1md2w3yj31300mw0ur.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1ri147oj310w0esdhb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1vh5t3wj30t80gowga.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx21lummpj30v40laq4j.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0hofnhsuj31iy0a4mzf.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0hqr6dbvj31960pgq7z.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0ic1sg98j31460r4jxm.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0kfngmzej312y0r8jwy.jpg">
+<meta property="article:published_time" content="2020-07-23T01:29:36.000Z">
+<meta property="article:modified_time" content="2020-10-24T10:05:08.796Z">
+<meta property="article:author" content="Sawyer Ren">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="缓存">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1md2w3yj31300mw0ur.jpg">
+
+<link rel="canonical" href="http://www.sawyerren.com/2020/07/23/Redis%E7%BC%93%E5%AD%98%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Redis缓存可能出现的问题和解决方法 | SawyerLearnsToCode</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SawyerLearnsToCode</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">闲来无事，记录一下学习过的技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.sawyerren.com/2020/07/23/Redis%E7%BC%93%E5%AD%98%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/WechatIMG1.jpeg">
+      <meta itemprop="name" content="Sawyer Ren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SawyerLearnsToCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis缓存可能出现的问题和解决方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-23 09:29:36" itemprop="dateCreated datePublished" datetime="2020-07-23T09:29:36+08:00">2020-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 18:05:08" itemprop="dateModified" datetime="2020-10-24T18:05:08+08:00">2020-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>下图是redis正常运作的流程，用户访问淘宝，淘宝再去请求redis，如果redis中有数据，就直接返回；如果redis中没有数据，就会去数据库查询，把查询到的结果返回并将数据同步到redis中。</p>
+<a id="more"></a>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1md2w3yj31300mw0ur.jpg" alt="avatar"></p>
+<h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1ri147oj310w0esdhb.jpg" alt="avatar"></p>
+<p>redis缓存中的key，同一时间大面积失效，就会导致缓存雪崩。</p>
+<p>解决方法如下：</p>
+<ol>
+<li>设置缓存的失效时间，不要在同一时间失效。随机初始化失效时间。</li>
+<li>集群部署。将不同的热点的key平均地分布到不同的节点上。</li>
+<li>定时任务，定时地刷新缓存。</li>
+</ol>
+<h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx1vh5t3wj30t80gowga.jpg" alt="avatar"></p>
+<p>用户发送恶意数据，redis和数据库中都没有这个数据。</p>
+<p>解决方案如下：</p>
+<ol>
+<li>数据库无论查询到什么结果，即使为空，都存入到redis中。这样如果该用户再发送相同的请求，就不会穿透。但是如果用户换不同的参数，这样就没用了。</li>
+<li>拉黑ip</li>
+<li>对参数的合法性进行校验。</li>
+<li>布隆过滤器</li>
+</ol>
+<h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjx21lummpj30v40laq4j.jpg" alt="avatar"></p>
+<p>大量请求访问一个热点的key，这个key突然失效。</p>
+<p>解决方案：</p>
+<ol>
+<li>分布式锁。在redis请求数据库的过程上锁，那么就只有一个线程可以抢到这个锁，能操作数据库。查询到数据库后，写到redis中，别的线程再去redis中查询。</li>
+<li>zookeeper，redis都可以实现分布式锁。</li>
+</ol>
+<h2 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h2><p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0hofnhsuj31iy0a4mzf.jpg"></p>
+<p>布隆过滤器本质上是一个位图（bit map）。作用就是判断一个数是否存在在数组中，如果不存在就是0，存在就是1。</p>
+<p>数据插入和判断的过程如下图所示。比如我们需要把“你好”插入到布隆过滤器中，对“你好”进行三次哈希运算，分别得到3、5、7三个结果，则将这三个哈希值映射得到的下标在数组中设为1。那么在判断时，数据经过哈希计算得到的值对应的下标必须都是1，才能说明这个数据有可能存在在布隆过滤器中。</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0hqr6dbvj31960pgq7z.jpg"></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>位图由一串二进制数组组成，占的空间非常小。</li>
+<li>插入和查询通过计算哈希值映射到下标，速度非常快。时间复杂度O(K)。k为哈希函数的数量。</li>
+<li>保密性很好，存储的是二进制数据，没有意义。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>很难做删除操作。</li>
+<li>会出现误判，即未出现在集合中的数据，经过计算哈希值相同，判断存在。</li>
+</ul>
+<p>那么误判率受到什么影响呢？位图的长度和哈希函数的个数。</p>
+<p><strong>长度越大，哈希函数越多，误判率越低，同时代码执行的效率也就越低。</strong></p>
+<h4 id="布隆过滤器怎么解决缓存穿透？"><a href="#布隆过滤器怎么解决缓存穿透？" class="headerlink" title="布隆过滤器怎么解决缓存穿透？"></a>布隆过滤器怎么解决缓存穿透？</h4><p><strong>白名单形式的布隆过滤器的流程如下：</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0ic1sg98j31460r4jxm.jpg"></p>
+<p>浏览器发送请求，其中包含查询的key，经过布隆过滤器，如果布隆过滤器中不存在这个key，就直接返回空数据。如果布隆过滤器判断这个key存在，就会向redis缓存中进行查询，之后就是正常的查询流程。</p>
+<p>白名单形式的布隆过滤器存在的问题在于误判，但是由于误判的概率比较小，所以这个问题不大。</p>
+<p>另一个需要注意的点在于需要把所有key都放在布隆过滤器中，否则就会直接返回空数据。</p>
+<p><strong>黑名单形式的布隆过滤器流程如下：</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwgy1gk0kfngmzej312y0r8jwy.jpg"></p>
+<p>与白名单不同的地方在于，如果布隆过滤器中存在查询的key，就直接返回空，如果不存在这个key，才会继续向缓存和数据库中查询。其次，如果数据库中也不存在这个key，会把这个key加入黑名单，即放到布隆过滤器中。</p>
+<p>黑名单过滤器的问题在于过滤器一开始是没有数据的，是经过一段时间的恶意访问后形成的数据，如果在刚开始的时候，就有大量的恶意访问key，还是会造成缓存穿透的问题。同时也存在误判，会把正常访问的数据误判为黑名单，返回空数据。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/%E7%BC%93%E5%AD%98/" rel="tag"># 缓存</a>
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/22/MySQL%E4%B8%AD%E7%9A%84%E9%82%A3%E4%BA%9B%E9%94%81/" rel="prev" title="MySQL中的那些锁">
+      <i class="fa fa-chevron-left"></i> MySQL中的那些锁
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/23/MySQL%E7%9A%84%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/" rel="next" title="MySQL的优化策略">
+      MySQL的优化策略 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-number">1.</span> <span class="nav-text">缓存雪崩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-number">2.</span> <span class="nav-text">缓存穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="nav-number">3.</span> <span class="nav-text">缓存击穿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">布隆过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%EF%BC%9F"><span class="nav-number">4.0.1.</span> <span class="nav-text">布隆过滤器怎么解决缓存穿透？</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sawyer Ren"
+      src="/uploads/WechatIMG1.jpeg">
+  <p class="site-author-name" itemprop="name">Sawyer Ren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sawyerren" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sawyerren" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rensy1121@gmail.com" title="E-Mail → mailto:rensy1121@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sawyer Ren</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

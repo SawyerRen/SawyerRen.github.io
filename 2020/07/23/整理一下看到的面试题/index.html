@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.sawyerren.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="从各处以及自己面试的经历中总结一些面试题，也算是记录一下自己面试的经历。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理一下看到的面试题">
+<meta property="og:url" content="http://www.sawyerren.com/2020/07/23/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E7%9C%8B%E5%88%B0%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="SawyerLearnsToCode">
+<meta property="og:description" content="从各处以及自己面试的经历中总结一些面试题，也算是记录一下自己面试的经历。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6918995-88de39265ea8c18f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/541/format/webp">
+<meta property="og:image" content="https://camo.githubusercontent.com/07ae8275dfa810865986f72535ca7e242857038a/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d31312f75726ce8be93e585a5e588b0e5b195e7a4bae587bae69da5e79a84e8bf87e7a88b2e6a7067">
+<meta property="og:image" content="c:/Users/SawyerRen/AppData/Roaming/Typora/typora-user-images/image-20200724104234131.png">
+<meta property="og:image" content="https://pics1.baidu.com/feed/d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg?token=c86d4509157378798ebbccbe843486d1&s=9746F8123F5754CA48D574DA0300D0B2">
+<meta property="article:published_time" content="2020-07-23T06:48:20.000Z">
+<meta property="article:modified_time" content="2020-07-24T05:37:30.000Z">
+<meta property="article:author" content="Sawyer Ren">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6918995-88de39265ea8c18f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/541/format/webp">
+
+<link rel="canonical" href="http://www.sawyerren.com/2020/07/23/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E7%9C%8B%E5%88%B0%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>整理一下看到的面试题 | SawyerLearnsToCode</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SawyerLearnsToCode</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">闲来无事，记录一下学习过的技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.sawyerren.com/2020/07/23/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E7%9C%8B%E5%88%B0%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/WechatIMG1.jpeg">
+      <meta itemprop="name" content="Sawyer Ren">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SawyerLearnsToCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          整理一下看到的面试题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-23 14:48:20" itemprop="dateCreated datePublished" datetime="2020-07-23T14:48:20+08:00">2020-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-24 13:37:30" itemprop="dateModified" datetime="2020-07-24T13:37:30+08:00">2020-07-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>从各处以及自己面试的经历中总结一些面试题，也算是记录一下自己面试的经历。</p>
+<a id="more"></a>
+
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h4 id="1-MySQL的引擎了解哪些？innodb和myisam有什么区别？memory了解吗？（字节跳动）"><a href="#1-MySQL的引擎了解哪些？innodb和myisam有什么区别？memory了解吗？（字节跳动）" class="headerlink" title="1. MySQL的引擎了解哪些？innodb和myisam有什么区别？memory了解吗？（字节跳动）"></a>1. MySQL的引擎了解哪些？innodb和myisam有什么区别？memory了解吗？（字节跳动）</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否支持行级锁</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>是否支持事务</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>崩溃后的安全恢复</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>是否支持外键</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>是否支持MVCC</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<h4 id="2-MySQL间隙锁，乐观锁，悲观锁怎么实现的？（字节跳动）"><a href="#2-MySQL间隙锁，乐观锁，悲观锁怎么实现的？（字节跳动）" class="headerlink" title="2. MySQL间隙锁，乐观锁，悲观锁怎么实现的？（字节跳动）"></a>2. MySQL间隙锁，乐观锁，悲观锁怎么实现的？（字节跳动）</h4><p>悲观锁，是指在数据处理过程中，数据处于锁定状态，一般通过数据库的锁来实现。</p>
+<p>MySQL默认使用自动autocommit模式，即每有一次更新操作，都会自动把结果提交上去。所以，需要把自动提交关闭。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set autocommit &#x3D; 0;</span><br></pre></td></tr></table></figure>
+
+<p>比如说，我们要查询商品信息后把数据锁定，直到修改完成后再解锁，这样在我们这个线程操作的时候，就不会有别的线程来操作这行数据了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select quantity from items where id&#x3D;100 for update</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>select...for update</code>就是实现悲观锁的方式，即锁定id=100的那一行。</p>
+<p>乐观锁相较于悲观锁，认为数据一般情况下不会造成冲突，在数据提交更新时才会去对数据的冲突与否进行检测。如果出现冲突，就返回错误信息。</p>
+<p>利用版本号机制是最常用的实现方式。通过在表中增加一个“version”字段，读取数据时，连同版本号一起读出，数据每更新一次，version+1。当我们提交更新时，判断对应记录的当前版本与第一次取出来的版本号对比，如果当前版本号和第一次取出来的版本号相等，就更新。</p>
+<h4 id="3-间隙锁是什么？（字节跳动）"><a href="#3-间隙锁是什么？（字节跳动）" class="headerlink" title="3. 间隙锁是什么？（字节跳动）"></a>3. 间隙锁是什么？（字节跳动）</h4><p>间隙锁，是在索引的间隙之间加锁，主要出现在范围查询中，在当前事务进行操作时，不允许别的事务在满足当前读条件的范围内进行数据操作。这也是为什么在RR隔离级别下可以防止幻读的原因。如果主键索引和唯一索引的值只有一个，不会出现幻读，就不会加Gap锁。</p>
+<h4 id="4-MVCC是什么？（字节跳动）"><a href="#4-MVCC是什么？（字节跳动）" class="headerlink" title="4. MVCC是什么？（字节跳动）"></a>4. MVCC是什么？（字节跳动）</h4><p>MVCC 是多版本并发控制，在很多情况下避免加锁，大都实现了非阻塞的读操作，写操作也只锁定必要的行。</p>
+<p>InnoDB 的MVCC 通过在每行记录后面保存两个隐藏的列来实现，这两个列一个保存了行的创建时间，一个保存行的过期时间间。不过存储的不是实际的时间值而是系统版本号，每开始一个新的事务系统版本号都会自动递增，事务开始时刻的系统版本号会作为事务的版本号，用来和查询到的每行记录的版本号进行比较。</p>
+<h4 id="5-Innodb的引擎结构是什么？（蔚来汽车）"><a href="#5-Innodb的引擎结构是什么？（蔚来汽车）" class="headerlink" title="5. Innodb的引擎结构是什么？（蔚来汽车）"></a>5. Innodb的引擎结构是什么？（蔚来汽车）</h4><p>我们平常所说的索引，如果没有特别指明，都是指<strong>B+树</strong>（多路搜索树，并不一定是二叉的）结构组织的索引。其中聚集索引、复合索引、前缀索引、唯一索引默认都是使用 B+tree 索引，统称为索引。</p>
+<p>MySql索引数据结构对B+Tree进行了优化，在B+Tree的基础上，<strong>增加一个指向相邻叶子结点的链表指针</strong>，就形成了<strong>带有顺序指针</strong>的B+Tree，提高区间访问的性能。</p>
+<h4 id="6-什么情况下索引失效？（蔚来汽车）"><a href="#6-什么情况下索引失效？（蔚来汽车）" class="headerlink" title="6.什么情况下索引失效？（蔚来汽车）"></a>6.什么情况下索引失效？（蔚来汽车）</h4><ol>
+<li>索引列出现了隐式类型转换，常见的情况是WHERE条件中字段类型是字符串，值为数值，如果没有加引号就不会使用索引</li>
+<li>WHERE条件中包含OR，除非两边都是索引列，否则就会失效</li>
+<li>使用模糊匹配，即LIKE操作</li>
+<li>多个范围条件查询，无法使用第一个范围列后面的其他索引列</li>
+</ol>
+<h4 id="7-隔离级别（蔚来汽车）"><a href="#7-隔离级别（蔚来汽车）" class="headerlink" title="7. 隔离级别（蔚来汽车）"></a>7. 隔离级别（蔚来汽车）</h4><p><strong>未提交读 READ UNCOMMITTED</strong></p>
+<p>在该级别事务中的修改即使没有被提交，对其他事务也是可见的。事务可以读取其他事务修改完但未提交的数据，这种问题称为脏读。这个级别还会导致不可重复读和幻读，性能没有比其他级别好很多，很少使用。</p>
+<p><strong>提交读 READ COMMITTED</strong></p>
+<p>多数数据库系统默认的隔离级别。提交读满足了隔离性的简单定义：一个事务开始时只能”看见”已经提交的事务所做的修改。换句话说，一个事务从开始直到提交之前的任何修改对其他事务都是不可见的。也叫不可重复读，因为两次执行同样的查询可能会得到不同结果。</p>
+<p><strong>可重复读 REPEATABLE READ</strong>（MySQL默认的隔离级别）</p>
+<p>可重复读解决了不可重复读的问题，保证了在同一个事务中多次读取同样的记录结果一致。但还是无法解决幻读，所谓幻读指的是当某个事务在读取某个范围内的记录时，会产生幻行。InnoDB 存储引擎通过多版本并发控制MVCC 解决幻读的问题。</p>
+<p><strong>可串行化 SERIALIZABLE</strong></p>
+<p>最高的隔离级别，通过强制事务串行执行，避免幻读。可串行化会在读取的每一行数据上都加锁，可能导致大量的超时和锁争用的问题。实际应用中很少用到这个隔离级别，只有非常需要确保数据一致性且可以接受没有并发的情况下才考虑该级别。</p>
+<h4 id="8-有哪些线程安全的容器？（蔚来汽车）"><a href="#8-有哪些线程安全的容器？（蔚来汽车）" class="headerlink" title="8. 有哪些线程安全的容器？（蔚来汽车）"></a>8. 有哪些线程安全的容器？（蔚来汽车）</h4><ul>
+<li><code>Vector</code>、<code>Hashtable</code>，以及封装器类<code>Collections.synchronizedList</code>和<code>Collections.synchronizedMap</code>；</li>
+<li>Java 5.0引入的<code>java.util.concurrent</code>包，其中包含阻塞队列、并发<code>ConcurrentHashMap</code>以及写入时复制容器如<code>CopyOnWriteArrayList</code>。</li>
+</ul>
+<h4 id="9-连表查询怎么查？平均值怎么查？自增主键怎么设置？索引怎么建？（思科）"><a href="#9-连表查询怎么查？平均值怎么查？自增主键怎么设置？索引怎么建？（思科）" class="headerlink" title="9. 连表查询怎么查？平均值怎么查？自增主键怎么设置？索引怎么建？（思科）"></a>9. 连表查询怎么查？平均值怎么查？自增主键怎么设置？索引怎么建？（思科）</h4><ul>
+<li>join: inner join, left join, right join</li>
+<li>avg()</li>
+<li>auto_increment</li>
+<li>create index 索引名 on 表名(列名)</li>
+</ul>
+<h4 id="10-建索引一定快吗？什么时候慢？什么是回表查询？什么是索引覆盖？（思科）"><a href="#10-建索引一定快吗？什么时候慢？什么是回表查询？什么是索引覆盖？（思科）" class="headerlink" title="10. 建索引一定快吗？什么时候慢？什么是回表查询？什么是索引覆盖？（思科）"></a>10. 建索引一定快吗？什么时候慢？什么是回表查询？什么是索引覆盖？（思科）</h4><p>不一定快，对于非常小的表，通常会采用全表扫描。而对于特大型的表，建立和使用索引的代价非常大。</p>
+<p>从普通索引无法直接定位行记录，通常情况下，需要扫码两遍索引树。先定位主键值，再定位行记录，这就是回表查询。</p>
+<p>索引覆盖是指，只需要在一棵索引树上就能获取SQL所需的所有列数据，无需回表，速度更快。常见的方法是：将被查询的字段，建立到联合索引里去。</p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h4 id="1-线程池创建和类别（蔚来汽车）"><a href="#1-线程池创建和类别（蔚来汽车）" class="headerlink" title="1. 线程池创建和类别（蔚来汽车）"></a>1. 线程池创建和类别（蔚来汽车）</h4><p>线程创建的方法：</p>
+<ol>
+<li>通过构造方法实现：<code>ThreadPoolExecutor</code></li>
+<li>通过工具类<code>Executors</code>实现，可以创建三种类型的线程池：<ul>
+<li><code>FixedThreadPool</code>：固定线程数量的线程池</li>
+<li><code>SingleThreadPool</code>：只有一个线程的线程池</li>
+<li><code>CachedThreadPool</code>：可根据实际情况调整线程数量的线程池</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-线程池的原理（蔚来汽车）"><a href="#2-线程池的原理（蔚来汽车）" class="headerlink" title="2. 线程池的原理（蔚来汽车）"></a>2. 线程池的原理（蔚来汽车）</h4><p>① 核心线程池未满，创建一个新的线程执行任务</p>
+<p>② 如果核心线程池已满，阻塞队列未满，将线程存储在阻塞队列</p>
+<p>③ 如果工作队列已满，线程数小于最大线程数就创建一个新线程处理任务</p>
+<p>④ 如果超过最大线程数，按照拒绝策略来处理任务</p>
+<h4 id="3-线程池的好处（蔚来汽车）"><a href="#3-线程池的好处（蔚来汽车）" class="headerlink" title="3. 线程池的好处（蔚来汽车）"></a>3. 线程池的好处（蔚来汽车）</h4><ul>
+<li>降低资源消耗</li>
+<li>提⾼响应速度</li>
+<li>提⾼线程的可管理性</li>
+</ul>
+<h4 id="4-ThreadLocal（蔚来汽车）"><a href="#4-ThreadLocal（蔚来汽车）" class="headerlink" title="4. ThreadLocal（蔚来汽车）"></a>4. ThreadLocal（蔚来汽车）</h4><p>ThreadLocal 是线程共享变量，主要用于一个线程内跨类、方法传递数据。ThreadLocal 有一个静态内部类 ThreadLocalMap，其 Key 是 ThreadLocal 对象，值是 Entry 对象，Entry 中只有一个 Object 类的 value 值。ThreadLocal 是线程共享的，但 ThreadLocalMap 是每个线程私有的。ThreadLocal 主要有 set、get 和 remove 三个方法。</p>
+<p>ThreadLocal 存在内存泄漏的问题，由于 ThreadLocal 是弱引用，但 Entry 的 value 是强引用，因此当 ThreadLocal 被垃圾回收后，value 依旧不会被释放。因此需要及时调用 remove 方法进行清理操作。</p>
+<h4 id="5-同步和异步，阻塞和非阻塞（蔚来汽车）"><a href="#5-同步和异步，阻塞和非阻塞（蔚来汽车）" class="headerlink" title="5. 同步和异步，阻塞和非阻塞（蔚来汽车）"></a>5. 同步和异步，阻塞和非阻塞（蔚来汽车）</h4><p>同步与异步是<strong>消息通信机制</strong>。同步是在发出一个调用之后，没有得到结果之前，这个调用不会返回。即调用者主动等待这个调用的结果。异步则是调用发出后，这个调用就直接返回了。</p>
+<p>阻塞和非阻塞关注的是<strong>程序在等待调用结果时的状态</strong>。阻塞是在调用结果返回之前，线程会被挂起，得到结果后才会返回。非阻塞是指得到结果之前，不会阻塞当前线程。</p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h4 id="1-Redis的应用场景-蔚来汽车"><a href="#1-Redis的应用场景-蔚来汽车" class="headerlink" title="1. Redis的应用场景(蔚来汽车)"></a>1. Redis的应用场景(蔚来汽车)</h4><p>Redis与传统数据库不同的是Redis是存在内存中的，所以读写速度非常快，因此Redis被广泛应用于缓存方向。此外，Redis也经常用来做分布式锁。</p>
+<h4 id="2-缓存雪崩是什么？缓存穿透是什么？怎么解决？（字节跳动）"><a href="#2-缓存雪崩是什么？缓存穿透是什么？怎么解决？（字节跳动）" class="headerlink" title="2. 缓存雪崩是什么？缓存穿透是什么？怎么解决？（字节跳动）"></a>2. 缓存雪崩是什么？缓存穿透是什么？怎么解决？（字节跳动）</h4><h5 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h5><p>缓存同一时间大面积失效，后面的请求都落到数据库上，造成数据库短时间内承受大量请求而崩掉。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>尽量保证Redis集群的高可用性，出现机器宕机及时补上。选择合适的内存淘汰策略。</li>
+<li>多级缓存，限流和降级，避免MySQL崩掉</li>
+<li>利用Redis持久化快速恢复缓存中的数据</li>
+</ul>
+<h5 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h5><p>大量的key根本不存在于缓存中，导致请求直接到了数据库，根本没有经过缓存这一层。</p>
+<p><strong>解决方法</strong>：</p>
+<ul>
+<li>做好参数校验，把不合法的参数直接抛出异常返回给客户端</li>
+<li>缓存无效key：如果缓存和数据库都查不到一个key，就写到Redis当中并设置过期时间。这个方法适用于key变化不频繁的情况。</li>
+<li>布隆过滤器：把所有可能存在的请求的值都放在布隆过滤器中，判断请求的值是否存在于布隆过滤器中，不存在的话，直接返回错误信息给客户端，存在的话再去Redis中查询。</li>
+</ul>
+<h4 id="3-布隆过滤器是怎么实现的？（字节跳动）"><a href="#3-布隆过滤器是怎么实现的？（字节跳动）" class="headerlink" title="3. 布隆过滤器是怎么实现的？（字节跳动）"></a>3. 布隆过滤器是怎么实现的？（字节跳动）</h4><p>布隆过滤器是一个bit map，即由二进制向量（或者说位数组）和一系列随机映射函数（哈希函数）两部分组成的数据结构。</p>
+<p><strong>当一个元素加入布隆过滤器中的时候，会进行如下操作：</strong></p>
+<ol>
+<li>使用布隆过滤器中的哈希函数对元素值进行计算，得到哈希值（有几个哈希函数得到几个哈希值）。</li>
+<li>根据得到的哈希值，在位数组中把对应下标的值置为 1。</li>
+</ol>
+<p><strong>当我们需要判断一个元素是否存在于布隆过滤器的时候，会进行如下操作：</strong></p>
+<ol>
+<li>对给定元素再次进行相同的哈希计算；</li>
+<li>得到值之后判断位数组中的每个元素是否都为 1，如果值都为 1，那么说明这个值在布隆过滤器中，如果存在一个值不为 1，说明该元素不在布隆过滤器中。</li>
+</ol>
+<p><strong>这种数据结构是高效且性能很好的，但缺点是具有一定的错误识别率和删除难度。并且，理论情况下，添加到集合中的元素越多，误报的可能性就越大。</strong></p>
+<h4 id="4-Redis中有哪些高级数据结构？（字节跳动）"><a href="#4-Redis中有哪些高级数据结构？（字节跳动）" class="headerlink" title="4. Redis中有哪些高级数据结构？（字节跳动）"></a>4. Redis中有哪些高级数据结构？（字节跳动）</h4><h5 id="Bitmaps"><a href="#Bitmaps" class="headerlink" title="Bitmaps"></a>Bitmaps</h5><p>bitmaps不是一个真实的数据结构。而是String类型上的一组面向bit操作的集合。由于strings是二进制安全的blob，并且它们的最大长度是512m，所以bitmaps能最大设置2^32个不同的bit。</p>
+<p>bit操作被分为两组：</p>
+<ul>
+<li>恒定时间的单个bit操作，例如把某个bit设置为0或者1。或者获取某bit的值。</li>
+<li>对一组bit的操作。例如给定范围内bit统计（例如人口统计）。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/6918995-88de39265ea8c18f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/541/format/webp" alt="img"></p>
+<p>bitmaps一般的使用场景：</p>
+<ul>
+<li>各种实时分析.</li>
+<li>存储与对象ID关联的节省空间并且高性能的布尔信息.</li>
+</ul>
+<h5 id="HyperLogLogs"><a href="#HyperLogLogs" class="headerlink" title="HyperLogLogs"></a>HyperLogLogs</h5><p>HyperLogLog是用于计算唯一事物的概率数据结构（从技术上讲，这被称为估计集合的基数）。如果统计唯一项，项目越多，需要的内存就越多。因为需要记住过去已经看过的项，从而避免多次统计这些项。</p>
+<h5 id="GEO"><a href="#GEO" class="headerlink" title="GEO"></a>GEO</h5><p>Redis的GEO特性在 Redis3.2版本中推出，这个功能可以将用户给定的地理位置（经度和纬度）信息储存起来，并对这些信息进行操作。</p>
+<h4 id="5-Redis的线程模型？（思科）"><a href="#5-Redis的线程模型？（思科）" class="headerlink" title="5. Redis的线程模型？（思科）"></a>5. Redis的线程模型？（思科）</h4><p>redis内部使用文件事件处理器，这个文件事件处理器是单线程的，所以redis才是单线程的模型。它采用IO多路复用机制同时监听多个socket，根据socket上的事件来选择对应的事件处理器进行处理。文件事件处理器包含4个部分：</p>
+<p>多个socket、IO多路复用程序、文件事件分派器、事件处理器</p>
+<p>多个socket会并发产生不同的操作，每个操作对应不同的文件事件，IO多路复用程序会监听多个socket，把事件放入队列中排队，事件分派器每次从队伍中取出一个事件，交给对应的事件处理器进行处理。</p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h4 id="1-浏览器输入url地址后到显示主页的过程（字节跳动）"><a href="#1-浏览器输入url地址后到显示主页的过程（字节跳动）" class="headerlink" title="1. 浏览器输入url地址后到显示主页的过程（字节跳动）"></a>1. 浏览器输入url地址后到显示主页的过程（字节跳动）</h4><p><img src="https://camo.githubusercontent.com/07ae8275dfa810865986f72535ca7e242857038a/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d31312f75726ce8be93e585a5e588b0e5b195e7a4bae587bae69da5e79a84e8bf87e7a88b2e6a7067" alt="img"></p>
+<h4 id="2-什么是DNS劫持？（字节跳动）"><a href="#2-什么是DNS劫持？（字节跳动）" class="headerlink" title="2. 什么是DNS劫持？（字节跳动）"></a>2. 什么是DNS劫持？（字节跳动）</h4><p>域名劫持是互联网攻击的一种方式，通过攻击域名解析服务器（DNS），或伪造域名解析服务器（DNS）的方法，把目标网站域名解析到错误的IP地址从而实现用户无法访问目标网站的目的或者蓄意或恶意要求用户访问指定IP地址（网站）的目的。</p>
+<h4 id="3-http1-0和1-1和2-0有什么区别？（字节跳动）"><a href="#3-http1-0和1-1和2-0有什么区别？（字节跳动）" class="headerlink" title="3. http1.0和1.1和2.0有什么区别？（字节跳动）"></a>3. http1.0和1.1和2.0有什么区别？（字节跳动）</h4><p>http1.0和http1.1的主要区别体现在：</p>
+<ul>
+<li>http1.0默认使用短链接，也就是说每次请求都要重新建立一次连接。http1.1默认使用长连接。</li>
+<li>http1.1新增了24个错误状态响应码</li>
+<li>http1.1引入了更多的缓存控制策略如Entity tag, If-Match等等</li>
+<li>http1.1在请求头中引入了range头域，允许只请求资源的某个部分，方便开发者自由的选择以便于充分利用带宽和连接</li>
+</ul>
+<p>http2.0比之前的协议有以下提升：</p>
+<ul>
+<li><strong>多路复用</strong>：允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。</li>
+<li><strong>二进制分帧</strong>：HTTP/2在 应用层(HTTP/2)和传输层(TCP or UDP)之间增加一个二进制分帧层。在不改动 HTTP/1.x 的语义、方法、状态码、URI 以及首部字段的情况下, 解决了HTTP1.1 的性能限制，改进传输性能，实现低延迟和高吞吐量。</li>
+<li><strong>首部压缩</strong>：HTTP/1.1并不支持 HTTP 首部压缩，为此 SPDY 和 HTTP/2 应运而生， SPDY 使用的是通用的DEFLATE 算法，而 HTTP/2 则使用了专门为首部压缩而设计的 HPACK 算法。</li>
+<li><strong>服务端推送</strong>：在 HTTP/2 中，服务器可以对客户端的一个请求发送多个响应。</li>
+</ul>
+<h4 id="4-https是什么？是怎么实现加密的？（字节跳动）"><a href="#4-https是什么？是怎么实现加密的？（字节跳动）" class="headerlink" title="4. https是什么？是怎么实现加密的？（字节跳动）"></a>4. https是什么？是怎么实现加密的？（字节跳动）</h4><p>HTTPS在传输数据之前需要客户端（浏览器）与服务端（网站）之间进行一次握手，在握手过程中将确立双方加密传输数据的密码信息。TLS/SSL协议不仅仅是一套加密传输的协议，TLS/SSL中使用了非对称加密，对称加密以及HASH算法。握手过程的简单描述如下：</p>
+<p>1.浏览器将自己支持的一套加密规则发送给网站。</p>
+<p>2.网站从中选出一组加密算法与HASH算法，并将自己的身份信息以证书的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及证书的颁发机构等信息。</p>
+<p>3.获得网站证书之后浏览器要做以下工作：<br> a) 验证证书的合法性（颁发证书的机构是否合法，证书中包含的网站地址是否与正在访问的地址一致等），如果证书受信任，则浏览器栏里面会显示一个小锁头，否则会给出证书不受信的提示。<br> b) 如果证书受信任，或者是用户接受了不受信的证书，浏览器会生成一串随机数的密码，并用证书中提供的公钥加密。<br> c) 使用约定好的HASH计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有信息发送给网站。</p>
+<p>4.网站接收浏览器发来的数据之后要做以下的操作：<br> a) 使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证HASH是否与浏览器发来的一致。<br> b) 使用密码加密一段握手消息，发送给浏览器。</p>
+<p>5.浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密。</p>
+<p>这里浏览器与网站互相发送加密的握手消息并验证，目的是为了保证双方都获得了一致的密码，并且可以正常的加密解密数据。其中非对称加密算法用于在握手过程中加密生成的密码，对称加密算法用于对真正传输的数据进行加密，而HASH算法用于验证数据的完整性。由于浏览器生成的密码是整个数据加密的关键，因此在传输的时候使用了非对称加密算法对其加密。非对称加密算法会生成公钥和私钥，公钥只能用于加密数据，因此可以随意传输，而网站的私钥用于对数据进行解密，所以网站都会非常小心的保管自己的私钥，防止泄漏。</p>
+<h4 id="5-OSI和TCP-IP各层的结构和协议？（星环科技）"><a href="#5-OSI和TCP-IP各层的结构和协议？（星环科技）" class="headerlink" title="5. OSI和TCP/IP各层的结构和协议？（星环科技）"></a>5. OSI和TCP/IP各层的结构和协议？（星环科技）</h4><p><img src="C:\Users\SawyerRen\AppData\Roaming\Typora\typora-user-images\image-20200724104234131.png" alt="image-20200724104234131"></p>
+<ul>
+<li>应用层：通过应⽤进程间的交互来完成特定⽹络应⽤。协议主要包括域名系统DNS，超文本传输协议HTTP，支持电子邮件的SMTP协议等等</li>
+<li>传输层：主要负责两台主机进程之间的通信提供数据传输服务。协议主要分为：TCP和UDP</li>
+<li>网络层：选择合适的网间路由和交换结点，确保数据及时传送。主要使用IP协议，此外还有ICMP协议，IGMP协议</li>
+<li>数据链路层：将网络层的IP数据包组装成帧，在相邻节点间的链路上传送。协议有ARP协议。</li>
+<li>物理层：实现相邻计算机节点之间比特流的透明传送，尽可能屏蔽掉具体传输介质和物理设备的差异。</li>
+</ul>
+<h4 id="6-TCP和UDP的区别？（思科）"><a href="#6-TCP和UDP的区别？（思科）" class="headerlink" title="6. TCP和UDP的区别？（思科）"></a>6. TCP和UDP的区别？（思科）</h4><p>TCP是面向连接的，传输是可靠的。但是传输的效率偏慢，需要的资源偏多。一般用于文件传输，发送和接受邮件，远程登陆等。</p>
+<p>UDP是无连接的，不可靠的。传输效率快，需要的资源少，且可以广播通信。一般用于即时通信，如语音，视频会议，直播等等。</p>
+<h4 id="7-TCP是如何保证可靠的？（思科）"><a href="#7-TCP是如何保证可靠的？（思科）" class="headerlink" title="7. TCP是如何保证可靠的？（思科）"></a>7. TCP是如何保证可靠的？（思科）</h4><ul>
+<li>首部校验和</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+<li>ARQ协议</li>
+<li>超时重传</li>
+</ul>
+<h4 id="8-TCP三次握手？（思科，星环科技）"><a href="#8-TCP三次握手？（思科，星环科技）" class="headerlink" title="8. TCP三次握手？（思科，星环科技）"></a>8. TCP三次握手？（思科，星环科技）</h4><p><img src="https://pics1.baidu.com/feed/d8f9d72a6059252d20d93b0a6645fb3e59b5b9d2.jpeg?token=c86d4509157378798ebbccbe843486d1&s=9746F8123F5754CA48D574DA0300D0B2" alt="img"></p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h4 id="1-手写一个单例模式（蔚来汽车）"><a href="#1-手写一个单例模式（蔚来汽车）" class="headerlink" title="1. 手写一个单例模式（蔚来汽车）"></a>1. 手写一个单例模式（蔚来汽车）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h4 id="1-快速排序的实现（星环科技）"><a href="#1-快速排序的实现（星环科技）" class="headerlink" title="1. 快速排序的实现（星环科技）"></a>1. 快速排序的实现（星环科技）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-归并排序的实现（星环科技）"><a href="#2-归并排序的实现（星环科技）" class="headerlink" title="2. 归并排序的实现（星环科技）"></a>2. 归并排序的实现（星环科技）</h4><h4 id="3-递归函数的时间复杂度（爱乐奇）"><a href="#3-递归函数的时间复杂度（爱乐奇）" class="headerlink" title="3. 递归函数的时间复杂度（爱乐奇）"></a>3. 递归函数的时间复杂度（爱乐奇）</h4><h2 id="Spring，SpringMVC，Mybatis"><a href="#Spring，SpringMVC，Mybatis" class="headerlink" title="Spring，SpringMVC，Mybatis"></a>Spring，SpringMVC，Mybatis</h2><h4 id="1-Spring创建单例bean是线程安全的吗？怎么解决？（星环科技）"><a href="#1-Spring创建单例bean是线程安全的吗？怎么解决？（星环科技）" class="headerlink" title="1. Spring创建单例bean是线程安全的吗？怎么解决？（星环科技）"></a>1. Spring创建单例bean是线程安全的吗？怎么解决？（星环科技）</h4><h4 id="2-简单介绍一下SpringMVC（星环科技）"><a href="#2-简单介绍一下SpringMVC（星环科技）" class="headerlink" title="2. 简单介绍一下SpringMVC（星环科技）"></a>2. 简单介绍一下SpringMVC（星环科技）</h4><h4 id="3-Spring框架的核心是什么？（星环科技）"><a href="#3-Spring框架的核心是什么？（星环科技）" class="headerlink" title="3. Spring框架的核心是什么？（星环科技）"></a>3. Spring框架的核心是什么？（星环科技）</h4><h4 id="4-Spring的AOP实现原理是什么？（星环科技）"><a href="#4-Spring的AOP实现原理是什么？（星环科技）" class="headerlink" title="4. Spring的AOP实现原理是什么？（星环科技）"></a>4. Spring的AOP实现原理是什么？（星环科技）</h4><h4 id="5-Spring用到了哪些设计模式？（蔚来汽车）"><a href="#5-Spring用到了哪些设计模式？（蔚来汽车）" class="headerlink" title="5. Spring用到了哪些设计模式？（蔚来汽车）"></a>5. Spring用到了哪些设计模式？（蔚来汽车）</h4><h4 id="6-依赖注入的原理是什么？有什么方式进行依赖注入？（蔚来汽车）"><a href="#6-依赖注入的原理是什么？有什么方式进行依赖注入？（蔚来汽车）" class="headerlink" title="6. 依赖注入的原理是什么？有什么方式进行依赖注入？（蔚来汽车）"></a>6. 依赖注入的原理是什么？有什么方式进行依赖注入？（蔚来汽车）</h4><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h4 id="1-Linux的常用命令？（思科）"><a href="#1-Linux的常用命令？（思科）" class="headerlink" title="1. Linux的常用命令？（思科）"></a>1. Linux的常用命令？（思科）</h4><ul>
+<li>目录切换：<code>cd .. / </code></li>
+<li>目录操作：<code>mkdir</code>,<code> ls -l</code>, <code>find</code>, <code>mv</code>, <code>cp -r</code>, <code>rm -rf</code></li>
+<li>文件操作：<code>touch</code>, <code>cat/more/less/tail</code>,<code> vim</code></li>
+<li>压缩文件：<code>tar -zcvf</code>压缩, <code>tar -xvf</code>解压</li>
+<li>权限命令：<code>chmod u=rwx,g=rw,o=r aaa.txt</code></li>
+<li>用户管理：<code>useradd</code>,<code>userdel</code>,<code>usermod</code>,<code>passwd</code>,<code>groupadd</code>, <code>groupdel</code></li>
+<li>网络通信命令：<code>ifconfig</code>查看网卡信息，<code>ping</code>，<code>netstat -an</code>查看端口使用</li>
+<li>进程管理：<code>ps -ef</code>，<code>kill -9 pid</code></li>
+<li>其他命令：<code>pwd</code>,<code>shutdown</code>,<code>sudo</code>,<code>grep</code>,<code>reboot</code></li>
+</ul>
+<h4 id="2-Linux的管道符有什么用？（星环科技）"><a href="#2-Linux的管道符有什么用？（星环科技）" class="headerlink" title="2. Linux的管道符有什么用？（星环科技）"></a>2. Linux的管道符有什么用？（星环科技）</h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/23/MySQL%E7%9A%84%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/" rel="prev" title="MySQL的优化策略">
+      <i class="fa fa-chevron-left"></i> MySQL的优化策略
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/22/Effective-Java%E7%AC%94%E8%AE%B0/" rel="next" title="Effective Java笔记">
+      Effective Java笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MySQL%E7%9A%84%E5%BC%95%E6%93%8E%E4%BA%86%E8%A7%A3%E5%93%AA%E4%BA%9B%EF%BC%9Finnodb%E5%92%8Cmyisam%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9Fmemory%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. MySQL的引擎了解哪些？innodb和myisam有什么区别？memory了解吗？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MySQL%E9%97%B4%E9%9A%99%E9%94%81%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%EF%BC%8C%E6%82%B2%E8%A7%82%E9%94%81%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. MySQL间隙锁，乐观锁，悲观锁怎么实现的？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%97%B4%E9%9A%99%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 间隙锁是什么？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-MVCC%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. MVCC是什么？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Innodb%E7%9A%84%E5%BC%95%E6%93%8E%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. Innodb的引擎结构是什么？（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%EF%BC%9F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.什么情况下索引失效？（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">1.0.7.</span> <span class="nav-text">7. 隔离级别（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E6%9C%89%E5%93%AA%E4%BA%9B%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%9F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">1.0.8.</span> <span class="nav-text">8. 有哪些线程安全的容器？（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E8%BF%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%80%8E%E4%B9%88%E6%9F%A5%EF%BC%9F%E5%B9%B3%E5%9D%87%E5%80%BC%E6%80%8E%E4%B9%88%E6%9F%A5%EF%BC%9F%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE%EF%BC%9F%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E5%BB%BA%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">1.0.9.</span> <span class="nav-text">9. 连表查询怎么查？平均值怎么查？自增主键怎么设置？索引怎么建？（思科）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-%E5%BB%BA%E7%B4%A2%E5%BC%95%E4%B8%80%E5%AE%9A%E5%BF%AB%E5%90%97%EF%BC%9F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%85%A2%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95%E8%A6%86%E7%9B%96%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">1.0.10.</span> <span class="nav-text">10. 建索引一定快吗？什么时候慢？什么是回表查询？什么是索引覆盖？（思科）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%88%9B%E5%BB%BA%E5%92%8C%E7%B1%BB%E5%88%AB%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 线程池创建和类别（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 线程池的原理（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. 线程池的好处（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-ThreadLocal%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. ThreadLocal（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%EF%BC%8C%E9%98%BB%E5%A1%9E%E5%92%8C%E9%9D%9E%E9%98%BB%E5%A1%9E%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. 同步和异步，阻塞和非阻塞（蔚来汽车）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">3.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Redis%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Redis的应用场景(蔚来汽车)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 缓存雪崩是什么？缓存穿透是什么？怎么解决？（字节跳动）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">缓存雪崩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-number">3.0.2.2.</span> <span class="nav-text">缓存穿透</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 布隆过滤器是怎么实现的？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Redis%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. Redis中有哪些高级数据结构？（字节跳动）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bitmaps"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">Bitmaps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HyperLogLogs"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">HyperLogLogs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GEO"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">GEO</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Redis%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">3.0.5.</span> <span class="nav-text">5. Redis的线程模型？（思科）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">4.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%9C%B0%E5%9D%80%E5%90%8E%E5%88%B0%E6%98%BE%E7%A4%BA%E4%B8%BB%E9%A1%B5%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. 浏览器输入url地址后到显示主页的过程（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AFDNS%E5%8A%AB%E6%8C%81%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 什么是DNS劫持？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-http1-0%E5%92%8C1-1%E5%92%8C2-0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. http1.0和1.1和2.0有什么区别？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-https%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%AF%86%E7%9A%84%EF%BC%9F%EF%BC%88%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%EF%BC%89"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. https是什么？是怎么实现加密的？（字节跳动）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-OSI%E5%92%8CTCP-IP%E5%90%84%E5%B1%82%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8D%8F%E8%AE%AE%EF%BC%9F%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">4.0.5.</span> <span class="nav-text">5. OSI和TCP&#x2F;IP各层的结构和协议？（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">4.0.6.</span> <span class="nav-text">6. TCP和UDP的区别？（思科）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-TCP%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%8F%AF%E9%9D%A0%E7%9A%84%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">4.0.7.</span> <span class="nav-text">7. TCP是如何保证可靠的？（思科）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%8C%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">4.0.8.</span> <span class="nav-text">8. TCP三次握手？（思科，星环科技）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AA%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. 手写一个单例模式（蔚来汽车）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">6.0.1.</span> <span class="nav-text">1. 快速排序的实现（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">6.0.2.</span> <span class="nav-text">2. 归并排序的实现（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%88%E7%88%B1%E4%B9%90%E5%A5%87%EF%BC%89"><span class="nav-number">6.0.3.</span> <span class="nav-text">3. 递归函数的时间复杂度（爱乐奇）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%EF%BC%8CSpringMVC%EF%BC%8CMybatis"><span class="nav-number">7.</span> <span class="nav-text">Spring，SpringMVC，Mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring%E5%88%9B%E5%BB%BA%E5%8D%95%E4%BE%8Bbean%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">7.0.1.</span> <span class="nav-text">1. Spring创建单例bean是线程安全的吗？怎么解决？（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BSpringMVC%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">7.0.2.</span> <span class="nav-text">2. 简单介绍一下SpringMVC（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Spring%E6%A1%86%E6%9E%B6%E7%9A%84%E6%A0%B8%E5%BF%83%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">7.0.3.</span> <span class="nav-text">3. Spring框架的核心是什么？（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Spring%E7%9A%84AOP%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">7.0.4.</span> <span class="nav-text">4. Spring的AOP实现原理是什么？（星环科技）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Spring%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">7.0.5.</span> <span class="nav-text">5. Spring用到了哪些设计模式？（蔚来汽车）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%9F%EF%BC%88%E8%94%9A%E6%9D%A5%E6%B1%BD%E8%BD%A6%EF%BC%89"><span class="nav-number">7.0.6.</span> <span class="nav-text">6. 依赖注入的原理是什么？有什么方式进行依赖注入？（蔚来汽车）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">8.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Linux%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9F%EF%BC%88%E6%80%9D%E7%A7%91%EF%BC%89"><span class="nav-number">8.0.1.</span> <span class="nav-text">1. Linux的常用命令？（思科）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Linux%E7%9A%84%E7%AE%A1%E9%81%93%E7%AC%A6%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F%EF%BC%88%E6%98%9F%E7%8E%AF%E7%A7%91%E6%8A%80%EF%BC%89"><span class="nav-number">8.0.2.</span> <span class="nav-text">2. Linux的管道符有什么用？（星环科技）</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sawyer Ren"
+      src="/uploads/WechatIMG1.jpeg">
+  <p class="site-author-name" itemprop="name">Sawyer Ren</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sawyerren" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sawyerren" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:rensy1121@gmail.com" title="E-Mail → mailto:rensy1121@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sawyer Ren</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
