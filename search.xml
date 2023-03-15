@@ -8,16 +8,15 @@
 
 <h3 id="如何安装插件"><a href="#如何安装插件" class="headerlink" title="如何安装插件"></a>如何安装插件</h3><p>打开IDEA的Settings，左边栏找到Plugins，可以看到Marketplace中的插件和已经安装的插件。</p>
 <p>找到你希望安装的插件，点击Install即可安装，安装后需要重启IDEA插件才能生效。</p>
-<h3 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211128286.png?token=AMIFG7CRPGRE5OWJU5YKL4TECENYK"></p>
+<h3 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314212304041.png?token=AMIFG7F6RCFYCYRSBIHSES3ECEPDM" alt="image-20230314212304041"></p>
 <p>这个插件可以在代码中勾选你希望翻译的词句，进行翻译。</p>
-<h3 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211349515.png?token=AMIFG7AKA3BG26VXTTMNWEDECEOAW" alt="image-20230314211349515"></p>
+<h3 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314212319424.png?token=AMIFG7HBRA6BRWIKOGJN2WDECEPEK" alt="image-20230314212319424"></p>
 <p>这个插件会给你的括号添加颜色，不同层的括号颜色不同，方便查看对应的括号。</p>
-<p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211436901.png?token=AMIFG7CTBQM2CZ7J7JRSH3DECEODU" alt="image-20230314211436901"></p>
-<h3 id="Key-Promoter-X"><a href="#Key-Promoter-X" class="headerlink" title="Key Promoter X"></a>Key Promoter X</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211507748.png?token=AMIFG7F7MMOPU66ONQXAJEDECEOFS" alt="image-20230314211507748"></p>
+<h3 id="Key-Promoter-X"><a href="#Key-Promoter-X" class="headerlink" title="Key Promoter X"></a>Key Promoter X</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314212338406.png?token=AMIFG7HMOJAFFOFF3JOESDLECEPFQ" alt="image-20230314212338406"></p>
 <p>这个插件会在你用鼠标等方式进行一些可以使用快捷键的操作时，提醒你对应的快捷键。</p>
-<h3 id="CodeGlance-Pro"><a href="#CodeGlance-Pro" class="headerlink" title="CodeGlance Pro"></a>CodeGlance Pro</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211611158.png?token=AMIFG7GYMH2PDZX55BLF32LECEOJS" alt="image-20230314211611158"></p>
+<h3 id="CodeGlance-Pro"><a href="#CodeGlance-Pro" class="headerlink" title="CodeGlance Pro"></a>CodeGlance Pro</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314212413477.png?token=AMIFG7CYEQXISAOFHU5SU6TECEPHW" alt="image-20230314212413477"></p>
 <p>这个插件会在编辑器的右边生成一个你的代码的缩略图，并且可以拖动这个缩略图来进行代码的查看。</p>
-<h3 id="AiXcoder-Code-Completer"><a href="#AiXcoder-Code-Completer" class="headerlink" title="AiXcoder Code Completer"></a>AiXcoder Code Completer</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211722812.png?token=AMIFG7EMUJH45ZQCMTW3TODECEOOA" alt="image-20230314211722812"></p>
+<h3 id="AiXcoder-Code-Completer"><a href="#AiXcoder-Code-Completer" class="headerlink" title="AiXcoder Code Completer"></a>AiXcoder Code Completer</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314212426829.png?token=AMIFG7FDFENC3ZNPFDR56CTECEPIQ" alt="image-20230314212426829"></p>
 <p>这个插件能提供比IDEA自带的更强大的代码补全功能。</p>
 ]]></content>
       <tags>
