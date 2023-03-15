@@ -3,7 +3,9 @@
   <entry>
     <title>IntelliJ IDEA常用插件.md</title>
     <url>/2023/03/14/IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6-md/</url>
-    <content><![CDATA[<p>本文介绍一些在Intellij IDEA中常用的插件。</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<p>本文介绍一些在Intellij IDEA中常用的插件。</p>
 <span id="more"></span>
 
 <h3 id="如何安装插件"><a href="#如何安装插件" class="headerlink" title="如何安装插件"></a>如何安装插件</h3><p>打开IDEA的Settings，左边栏找到Plugins，可以看到Marketplace中的插件和已经安装的插件。</p>
