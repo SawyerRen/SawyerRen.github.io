@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/03/03/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>IntelliJ IDEA常用插件.md</title>
+    <url>/2023/03/14/IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6-md/</url>
+    <content><![CDATA[<p>本文介绍一些在Intellij IDEA中常用的插件。</p>
+<span id="more"></span>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="如何安装插件"><a href="#如何安装插件" class="headerlink" title="如何安装插件"></a>如何安装插件</h3><p>打开IDEA的Settings，左边栏找到Plugins，可以看到Marketplace中的插件和已经安装的插件。</p>
+<p>找到你希望安装的插件，点击Install即可安装，安装后需要重启IDEA插件才能生效。</p>
+<h3 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211128286.png?token=AMIFG7CRPGRE5OWJU5YKL4TECENYK"></p>
+<p>这个插件可以在代码中勾选你希望翻译的词句，进行翻译。</p>
+<h3 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211349515.png?token=AMIFG7AKA3BG26VXTTMNWEDECEOAW" alt="image-20230314211349515"></p>
+<p>这个插件会给你的括号添加颜色，不同层的括号颜色不同，方便查看对应的括号。</p>
+<p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211436901.png?token=AMIFG7CTBQM2CZ7J7JRSH3DECEODU" alt="image-20230314211436901"></p>
+<h3 id="Key-Promoter-X"><a href="#Key-Promoter-X" class="headerlink" title="Key Promoter X"></a>Key Promoter X</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211507748.png?token=AMIFG7F7MMOPU66ONQXAJEDECEOFS" alt="image-20230314211507748"></p>
+<p>这个插件会在你用鼠标等方式进行一些可以使用快捷键的操作时，提醒你对应的快捷键。</p>
+<h3 id="CodeGlance-Pro"><a href="#CodeGlance-Pro" class="headerlink" title="CodeGlance Pro"></a>CodeGlance Pro</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211611158.png?token=AMIFG7GYMH2PDZX55BLF32LECEOJS" alt="image-20230314211611158"></p>
+<p>这个插件会在编辑器的右边生成一个你的代码的缩略图，并且可以拖动这个缩略图来进行代码的查看。</p>
+<h3 id="AiXcoder-Code-Completer"><a href="#AiXcoder-Code-Completer" class="headerlink" title="AiXcoder Code Completer"></a>AiXcoder Code Completer</h3><p><img data-src="https://raw.githubusercontent.com/SawyerRen/pictures/master/image-20230314211722812.png?token=AMIFG7EMUJH45ZQCMTW3TODECEOOA" alt="image-20230314211722812"></p>
+<p>这个插件能提供比IDEA自带的更强大的代码补全功能。</p>
 ]]></content>
+      <tags>
+        <tag>开发工具</tag>
+      </tags>
   </entry>
 </search>
